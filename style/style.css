@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+* {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ddd;
+}
+
+.container {
+  width: 750px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #8b64f4;
+  color: #fff;
+  text-align: center;
+}
+.container h1,
+.container h3 {
+  text-transform: uppercase;
+}
+.container input {
+  width: auto;
+  border-radius: 5px;
+  text-transform: capitalize;
+  padding: 10px;
+  border: none;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.container input[type=button]:hover {
+  color: #fff;
+  background-color: #280d73;
+}
+.container input.title, .container input.create, .container input.category, .container input.delete, .container input.search, .container input.count {
+  width: 90%;
+}
+.container .price > input {
+  width: 140px;
+}
+.container .price .total {
+  display: inline;
+}
+.container .search {
+  display: flex;
+  justify-content: space-between;
+}
+
+#data-read {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+#data-read table {
+  border-radius: 10px;
+  background-color: #fff;
+  width: 95%;
+  text-align: center;
+  border: 1px 0 solid rgb(0, 0, 0);
+  text-transform: capitalize;
+}
+#data-read table th {
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+#data-read table .delete {
+  color: #f47174;
+  cursor: pointer;
+}
+#data-read table .edit {
+  color: #280d73;
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */

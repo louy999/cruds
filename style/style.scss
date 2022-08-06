@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+@import "./color";
+* {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #ddd;
+}
+
+.container {
+  width: 750px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: $bgBtn;
+  color: $white;
+  text-align: center;
+  h1,
+  h3 {
+    text-transform: uppercase;
+  }
+  input {
+    width: auto;
+    border-radius: 5px;
+    text-transform: capitalize;
+    padding: 10px;
+    border: none;
+    margin: 10px 0;
+    cursor: pointer;
+    &[type="button"] {
+      &:hover {
+        color: $white;
+        background-color: $bg;
+      }
+    }
+    &.title,
+    &.create,
+    &.category,
+    &.delete,
+    &.search,
+    &.count {
+      width: 90%;
+    }
+  }
+  .price {
+    > input {
+      width: calc(700px / 5);
+    }
+    .total {
+      display: inline;
+    }
+  }
+  .search {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+#data-read {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  table {
+    border-radius: 10px;
+    // height: 100vh;
+    background-color: $white;
+    width: 95%;
+    text-align: center;
+    border: 1px 0 solid $black;
+    text-transform: capitalize;
+    th {
+      border-bottom: 1px solid $black;
+    }
+    .delete {
+      color: $sofRed;
+      cursor: pointer;
+    }
+    .edit {
+      color: $bg;
+      cursor: pointer;
+    }
+  }
+}

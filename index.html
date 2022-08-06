@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./node_modules/normalize.css/normalize.css" />
+    <script src="https://kit.fontawesome.com/4d905c5a1a.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>cruds</h1>
+      <h3>create read update delete search</h3>
+      <div class="data">
+        <input type="text" class="title" placeholder="title" />
+        <div class="price">
+          <input
+            type="number"
+            class="price"
+            name=""
+            placeholder="price"
+            id=""
+          />
+          <input
+            type="number"
+            class="taxes"
+            name=""
+            placeholder="taxes"
+            id=""
+          />
+          <input type="number" class="ads" name="" placeholder="ads" id="" />
+          <input
+            type="number"
+            class="discount"
+            name=""
+            placeholder="discount"
+            id=""
+          />
+          <div class="total"></div>
+        </div>
+        <input type="number" class="count" placeholder="count" />
+        <input type="text" class="category" placeholder="category" />
+        <input type="button" class="create" value="create" />
+        <input
+          type="search"
+          name=""
+          class="search"
+          placeholder="search"
+          id=""
+        />
+        <div class="search">
+          <input type="button" class="by-title" value="search By title" />
+          <input type="button" class="by-cate" value="search By category" />
+        </div>
+        <input type="button" class="delete" value="delete all (5)" />
+      </div>
+    </div>
+    <div id="data-read">
+      <table>
+        <tr>
+          <th>id</th>
+          <th>title</th>
+          <th>price</th>
+          <th>taxes</th>
+          <th>ads</th>
+          <th>discount</th>
+          <th>category</th>
+          <th>delete</th>
+          <th>Edit</th>
+        </th>
+      </table>
+    </div>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
