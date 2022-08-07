@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  width: 750px;
+  width: min(750px, 350px);
   margin: 0 auto;
   padding: 20px;
   border-radius: 10px;
@@ -46,7 +46,7 @@ body {
   }
   .price {
     > input {
-      width: calc(700px / 5);
+      width: calc(100% / 5);
     }
     .total {
       display: inline;
@@ -70,6 +70,7 @@ body {
     text-align: center;
     border: 1px 0 solid $black;
     text-transform: capitalize;
+
     th {
       border-bottom: 1px solid $black;
     }
@@ -81,5 +82,11 @@ body {
       color: $bg;
       cursor: pointer;
     }
+  }
+}
+@media (min-width: 350px) {
+  .container {
+    margin: 0;
+    padding: 0;
   }
 }

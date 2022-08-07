@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  width: 750px;
+  width: 350px;
   margin: 0 auto;
   padding: 20px;
   border-radius: 10px;
@@ -39,7 +39,7 @@ body {
   width: 90%;
 }
 .container .price > input {
-  width: 140px;
+  width: 20%;
 }
 .container .price .total {
   display: inline;
@@ -73,4 +73,11 @@ body {
 #data-read table .edit {
   color: #280d73;
   cursor: pointer;
+}
+
+@media (min-width: 350px) {
+  .container {
+    margin: 0;
+    padding: 0;
+  }
 }/*# sourceMappingURL=style.css.map */

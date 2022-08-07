@@ -11,11 +11,11 @@ let searchInput = document.querySelector("input.search");
 // button or text
 let totalInput = document.querySelector("div.total");
 let createInput = document.querySelector("input.create");
-let searchByTitleInput = document.querySelector("input.by-title");
-let searchByCateInput = document.querySelector("input.by-cate");
 let deleteInput = document.querySelector("input.delete");
 //table var
 let table = document.querySelector("#data-read table");
+let mood = "create";
+let numberIndexInArray;
 //function for edit valid input
 function validInput() {
     if (titleInput.value != "") {
@@ -45,7 +45,17 @@ setInterval(() => {
 }, 100);
 createInput.addEventListener("click", () => {
     validInput();
+    restDAta();
 });
+function restDAta() {
+    titleInput.value = "";
+    priceInput.value = "";
+    taxesInput.value = "";
+    adsInput.value = "";
+    discountInput.value = "";
+    countInput.value = "";
+    categoryInput.value = "";
+}
 // function for add data to localStorage
 let dataTable;
 if (localStorage.data != null) {
@@ -65,20 +75,41 @@ function addToLocalStorage() {
         category: categoryInput.value,
         count: countInput.value,
     };
-    console.log(newData.count);
-    if (+newData.count > 1) {
-        for (let i = 0; i < +newData.count; i++) {
+    if (mood == "create") {
+        if (+newData.count > 1) {
+            for (let i = 0; i < +newData.count; i++) {
+                dataTable.push(newData);
+                createData();
+                console.log(`mood ${mood}`);
+            }
+        }
+        else {
+            console.log(`mood ${mood}`);
             dataTable.push(newData);
             createData();
+            console.log(newData.count);
         }
     }
     else {
-        console.log(newData.count);
+        console.log(`mood ${mood}`);
+        dataTable[numberIndexInArray] = newData;
+        countInput.style.display = "block";
+        createInput.value = "create";
+        mood = "create";
+        table.innerHTML = `      <tr>
+          <th>id</th>
+          <th>title</th>
+          <th>price</th>
+          <th>taxes</th>
+          <th>ads</th>
+          <th>discount</th>
+          <th>category</th>
+          <th>delete</th>
+          <th>Edit</th>
+        </th>`;
+        showData();
     }
-    // addToLocalStorage();
-    // dataTable.push(newData);
     localStorage.setItem("data", JSON.stringify(dataTable));
-    console.log(dataTable);
 }
 // localStorage.clear();
 function createData() {
@@ -92,7 +123,7 @@ function createData() {
           <td>${discountInput.value || "0"}</td>
           <td>${categoryInput.value}</td>
           <td class="delete"><i class="fa-solid fa-trash-can"></i></td>
-          <td class="edit"><i class="fa-solid fa-pen-to-square"></i></td>
+          <td class="edit" ><i class="fa-solid fa-pen-to-square"></i></td>
           `;
     table.appendChild(tr);
     idNum++;
@@ -109,7 +140,7 @@ function showData() {
           <td>${dataTable[i].discount || "0"}</td>
           <td>${dataTable[i].category}</td>
           <td class="delete" onclick="deleteItem(${i})"><i class="fa-solid fa-trash-can"></i></td>
-          <td class="edit"><i class="fa-solid fa-pen-to-square"></i></td>`;
+          <td class="edit" onclick="edit(${i})"><i class="fa-solid fa-pen-to-square"></i></td>`;
             idNum = i + 2;
         }
     }
@@ -132,6 +163,7 @@ function deleteAll() {
           <th>Edit</th>
         </th>`;
         localStorage.clear();
+        // restDAta();
     });
 }
 deleteAll();
@@ -150,4 +182,79 @@ function deleteItem(i) {
           <th>Edit</th>
         </th>`;
     showData();
+}
+function edit(i) {
+    titleInput.value = dataTable[i].title;
+    priceInput.value = dataTable[i].price;
+    taxesInput.value = dataTable[i].tax;
+    adsInput.value = dataTable[i].ads;
+    discountInput.value = dataTable[i].discount;
+    categoryInput.value = dataTable[i].category;
+    countInput.style.display = "none";
+    createInput.value = "update";
+    mood = "update";
+    numberIndexInArray = i;
+    window.scroll({
+        top: 0,
+        behavior: "smooth",
+    });
+}
+let searchMood = "title";
+function moodSearch(id) {
+    if (id == "by-title") {
+        searchInput.placeholder = `search ${id}`;
+        searchMood = "title";
+    }
+    else {
+        searchMood = "cate";
+        searchInput.placeholder = `search ${id}`;
+    }
+    searchInput.focus();
+}
+function search(value) {
+    table.innerHTML = `      <tr>
+    <th>id</th>
+    <th>title</th>
+    <th>price</th>
+    <th>taxes</th>
+    <th>ads</th>
+    <th>discount</th>
+    <th>category</th>
+    <th>delete</th>
+    <th>Edit</th>
+  </th>`;
+    if (searchMood == "title") {
+        for (let i = 0; i < dataTable.length; i++) {
+            if (dataTable[i].title.includes(value)) {
+                console.log(dataTable[i]);
+                table.innerHTML += `
+      <td>${i + 1}</td>
+    <td>${dataTable[i].title}</td>
+          <td>${dataTable[i].price}</td>
+          <td>${dataTable[i].tax || "0"}</td>
+          <td>${dataTable[i].ads || "0"}</td>
+          <td>${dataTable[i].discount || "0"}</td>
+          <td>${dataTable[i].category}</td>
+          <td class="delete" onclick="deleteItem(${i})"><i class="fa-solid fa-trash-can"></i></td>
+          <td class="edit" onclick="edit(${i})"><i class="fa-solid fa-pen-to-square"></i></td>`;
+            }
+        }
+    }
+    else {
+        for (let i = 0; i < dataTable.length; i++) {
+            if (dataTable[i].category.includes(value)) {
+                console.log(dataTable[i]);
+                table.innerHTML += `
+      <td>${i + 1}</td>
+    <td>${dataTable[i].title}</td>
+          <td>${dataTable[i].price}</td>
+          <td>${dataTable[i].tax || "0"}</td>
+          <td>${dataTable[i].ads || "0"}</td>
+          <td>${dataTable[i].discount || "0"}</td>
+          <td>${dataTable[i].category}</td>
+          <td class="delete" onclick="deleteItem(${i})"><i class="fa-solid fa-trash-can"></i></td>
+          <td class="edit" onclick="edit(${i})"><i class="fa-solid fa-pen-to-square"></i></td>`;
+            }
+        }
+    }
 }

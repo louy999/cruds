@@ -49,10 +49,11 @@
           class="search"
           placeholder="search"
           id=""
+          onkeyup="search(this.value)"
         />
         <div class="search">
-          <input type="button" class="by-title" value="search By title" />
-          <input type="button" class="by-cate" value="search By category" />
+          <input type="button"   onclick="moodSearch(this.id)"  id="by-title" class="by-title" value="search By title" />
+          <input type="button"  onclick="moodSearch(this.id)" id="by-cate" class="by-cate" value="search By category" />
         </div>
         <input type="button" class="delete" value="delete all (5)" />
       </div>
