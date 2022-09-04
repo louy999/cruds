@@ -10,8 +10,8 @@ body {
 }
 
 .container {
-  width: min(750px, 350px);
-  margin: 0 auto;
+  width: 100%;
+  // margin: 0 auto;
   padding: 20px;
   border-radius: 10px;
   background-color: $bgBtn;
@@ -55,10 +55,13 @@ body {
   .search {
     display: flex;
     justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
   }
 }
 #data-read {
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
   margin: 10px 0;
