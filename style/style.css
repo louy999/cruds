@@ -7,11 +7,12 @@
 
 body {
   background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .container {
-  width: 350px;
-  margin: 0 auto;
   padding: 20px;
   border-radius: 10px;
   background-color: #8b64f4;
@@ -31,11 +32,16 @@ body {
   margin: 10px 0;
   cursor: pointer;
 }
-.container input[type=button]:hover {
+.container input[type="button"]:hover {
   color: #fff;
   background-color: #280d73;
 }
-.container input.title, .container input.create, .container input.category, .container input.delete, .container input.search, .container input.count {
+.container input.title,
+.container input.create,
+.container input.category,
+.container input.delete,
+.container input.search,
+.container input.count {
   width: 90%;
 }
 .container .price > input {
@@ -80,4 +86,4 @@ body {
     margin: 0;
     padding: 0;
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
